@@ -2,7 +2,7 @@
 
 班级：   19计算机信息管理1班   
 姓名：   文志辉 
-学号：   20190307115
+学号：   20190307114
 
 注：请将答案放置在序号下方。*/
 
@@ -75,44 +75,4 @@ namespace ConsoleApp1
             (decimal pay, decimal deduct)[]Pays ={ (5000,1000),(8000,0),(10000,3000)};
             foreach (var pay in Pays)
             {
-                Console.WriteLine($"工资{pay.pay}附加扣除{pay.deduct}，所得税{Tax(pay)}");
-            }
-        }
-    }
-}
-
-（三）
-using System;
-using System.Threading.Tasks;
-using System.IO;
-using System.Collections.Generic;
-using System.Threading;
-namespace ConsoleApp1
-{
-    class Program
-    {
-
-        static void Main(string[] args)
-        {
-            List<string> paFiles = new List<string>();
-            for (int i = 0; i < 10; i++)
-                paFiles.Add("paFile" + i.ToString());
-            Random rand = new Random();
-            Parallel.ForEach(paFiles, new ParallelOptions() { MaxDegreeOfParallelism = 3 }, pafile =>
-            {
-                var id = Thread.CurrentThread.ManagedThreadId;
-                Console.WriteLine($"线程{id}开始写入{pafile}");
-                int len = rand.Next(1, 1000);
-                byte[] txt = new byte[len];
-                rand.NextBytes(txt);
-                using (FileStream fs = new FileStream(pafile, FileMode.Create))
-                {
-                    fs.Write(txt);
-                }
-                Console.WriteLine($"线程{id}写入{pafile},{len}字节");
-            });
-        }
-    }
-}
-
-
+                Console.WriteLine($"工资{pay.pay}附加扣除{pay.deduct}，所得
